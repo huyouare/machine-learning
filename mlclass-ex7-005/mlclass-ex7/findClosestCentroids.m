@@ -21,11 +21,16 @@ idx = zeros(size(X,1), 1);
 % Note: You can use a for-loop over the examples to compute this.
 %
 
-
-
-
-
-
+for i = 1:length(X)
+    deltas = zeros(K, 1);
+    x = X(i, :);
+    for j = 1:K
+        k = centroids(j, :);
+        delta = x - k;
+        deltas(j) = delta * delta';
+    end
+    [y, idx(i)] = min(deltas);
+end
 
 % =============================================================
 
